@@ -1,9 +1,15 @@
 <select name="" data-type="select" id="goSelect">
-  <option value="./ec/private_info35.html" data-policy-type="legacy">
-    (구) 개인정보 처리방침 V35.0 보기
-  </option>
-  <option value="./ec/private_info34.html" data-policy-type="legacy">
-    (구) 개인정보 처리방침 V34.0 보기
-  </option>
+	<optgroup id="currentPolicyGroup" label="현재 개인정보 처리방침">
+    <!-- 신버전 option이 여기에 들어감 -->
+	</optgroup>
+	
+	<optgroup id="legacyPolicyGroup" label="이전 개인정보 처리방침" >
+		<option value="./ec/private_info35.html" data-policy-type="legacy">
+		  (구) 개인정보 처리방침 V35.0 보기
+		</option>
+		<option value="./ec/private_info34.html" data-policy-type="legacy">
+		  (구) 개인정보 처리방침 V34.0 보기
+		</option>
+ 	</optgroup>
 </select>
 <a href="#" class="input_btn">확인</a>

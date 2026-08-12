@@ -30,7 +30,7 @@
     </main>
 
     <script>
-      $(function () {
+    $(function () {
 		$.ajax({
 			type: "get",
 			url: "./ec/private_select.html",
@@ -84,10 +84,10 @@
 			);
 			},
 			error: function (_xhr,_status,error) {
-			console.error("구버전 선택 목록 로드 실패",error);
+				console.error("구버전 선택 목록 로드 실패",error);
 			}
 		});
-		});
+	});
     </script>
     <script src="./common.js"></script>
   </body>
