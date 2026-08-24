@@ -80,7 +80,14 @@
 
 			$(".input_btn").wrap('<span class="btn9"></span>');
 
-			document.dispatchEvent(new CustomEvent("policySelectorReady")
+			/**
+			 * private_select.html의 셀렉트와 버튼이 DOM에 삽입된 시점입니다.
+			 * `policySelectorReady`라는 커스텀 이벤트를 직접 생성하여 발생시키면,
+			 * common.js의 document.addEventListener("policySelectorReady", ...)가
+			 * 이 신호를 받아 신버전 처리방침 기능을 초기화합니다.
+			 */
+			document.dispatchEvent(
+				new CustomEvent("policySelectorReady")
 			);
 			},
 			error: function (_xhr,_status,error) {
