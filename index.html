@@ -7,87 +7,40 @@
     <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
   </head>
   <body>
-    <main class="privacy-policy" data-policy-type="personal">
-      <!-- 신버전 처리방침만 fetch로 들어가는 영역 -->
-      <div id="policyContent" hidden aria-live="polite"></div>
 
-      <!-- 구버전 35개 처리방침은 기존 iframe 구조 유지 -->
-      <iframe
-        src="./ec/private_info35.html"
-        frameborder="0"
-        id="privateInfo"
-        scrolling="no"
-        style="width: 100%; height: 9492px"
-        title="개인정보 처리방침 상세 내용"
-      ></iframe>
-
-      <!-- 구버전 셀렉트 파일이 AJAX로 들어가는 영역 -->
+	<div class="content">
+		<iframe src="privacy-policy/personal/privacy_policy_v1.0.html" frameborder="0" hspace="0" vspace="0" marginwidth="0" marginheight="0" scrolling="no" style="width: 100%; height: 24050px" id="privateInfo" title="개인정보처리방침 상세내용"></iframe>
+    <div class="box_rull" style="border-top: none; margin-top: -4px;">
       <div class="bot">
         <div class="ver_certi">
-          <p id="private_sel"></p>
+          <p class="mgt10" id="private_sel"></p>
         </div>
       </div>
-    </main>
-
+    </div>
+	</div>
     <script>
-    $(function () {
-		$.ajax({
-			type: "get",
-			url: "./ec/private_select.html",
-			dataType: "html",
-			success: function (data) {
-			$("#private_sel").append(data);
+      $.ajax({
+        type: 'get',
+        url: 'ec/private_select.html',
+        dataType: 'html',
+        success : function(data) {
+          $('#private_sel').append(data);
+          infoHei = new Array('24050', '9492');
 
-			// 기존 35개 높이값
-			var infoHei = new Array("9492","9492");
+          $('#goSelect').change(function() {
+            goUrl = $('#goSelect > option:selected').val();
+            goIndex  = $('#goSelect > option').index($('#goSelect > option:selected'));
+          });
 
-			function getSelectedOption() {
-				return $("#goSelect option:selected");
-			}
+          $('.input_btn').click(function() {
+            $('#privateInfo').css('height', infoHei[goIndex]);
+            $('#privateInfo').attr('src', goUrl);
+            $('html, body').stop().animate({scrollTop: 0}, 0);
+          });
 
-			function getLegacyIndex(selectedOption) {
-				return $("#legacyPolicyGroup option").index(selectedOption);
-			}
-
-			$(".input_btn").click(function (event) {
-				var selectedOption = getSelectedOption();
-
-				var policyType = selectedOption.data("policy-type");
-
-				/**
-				 * 신버전
-				 *
-				 * common.js가 처리하므로
-				 * 여기서는 아무 것도 하지 않음
-				 */
-				if (policyType === "new") {
-				return;
-				}
-
-				/**
-				 * 구버전
-				 */
-				event.preventDefault();
-
-				var goUrl = selectedOption.val();
-
-				var legacyIndex = getLegacyIndex(selectedOption);
-
-				$("#policyContent").prop("hidden", true);
-				$("#privateInfo").prop("hidden", false).css("height",infoHei[legacyIndex]).attr("src", goUrl);
-				$("html, body").stop().animate({ scrollTop: 0 },0);
-			});
-
-			$(".input_btn").wrap('<span class="btn9"></span>');
-
-			document.dispatchEvent(new CustomEvent("policySelectorReady")
-			);
-			},
-			error: function (_xhr,_status,error) {
-				console.error("구버전 선택 목록 로드 실패",error);
-			}
-		});
-	});
+          $('.input_btn').wrap('<span class="btn9"></span>');
+        }
+      })
     </script>
     <script src="./common.js"></script>
   </body>
