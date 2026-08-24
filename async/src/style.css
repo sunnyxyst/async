@@ -1,0 +1,9 @@
+* { box-sizing: border-box; }
+body { margin: 0; color: #222; background: #f5f6f8; font-family: Arial, "Noto Sans KR", sans-serif; }
+.privacy-policy { width: min(100% - 32px, 960px); margin: 40px auto; padding: 32px; background: #fff; border: 1px solid #ddd; }
+h1 { margin: 0 0 24px; font-size: 28px; }
+#policyContent, #privateInfo { display: block; width: 100%; min-height: 420px; border: 0; }
+[hidden] { display: none !important; }
+.policy-selector { margin-top: 24px; padding-top: 20px; border-top: 1px solid #ddd; }
+#goSelect { min-width: 320px; max-width: 100%; min-height: 38px; }
+.input_btn { display: inline-block; margin-left: 8px; padding: 9px 18px; color: #fff; background: #333; text-decoration: none; }

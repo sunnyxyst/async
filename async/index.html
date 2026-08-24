@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>개인정보 처리방침 테스트</title>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  </head>
+  <body>
+    <main class="privacy-policy" data-policy-type="personal">
+      <h1>개인정보 처리방침</h1>
+      <div id="policyContent" hidden aria-live="polite"></div>
+      <iframe
+        src="/ec/private_info35.html"
+        id="privateInfo"
+        title="개인정보 처리방침 상세 내용"
+        scrolling="no"
+      ></iframe>
+      <div class="policy-selector" id="private_sel"></div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
